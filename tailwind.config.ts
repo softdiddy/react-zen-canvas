@@ -3,10 +3,10 @@ import type { Config } from "tailwindcss";
 export default {
 	darkMode: ["class"],
 	content: [
-		"./pages/**/*.{ts,tsx}",
-		"./components/**/*.{ts,tsx}",
-		"./app/**/*.{ts,tsx}",
-		"./src/**/*.{ts,tsx}",
+		"./pages/**/*.{ts,tsx,js,jsx}",
+		"./components/**/*.{ts,tsx,js,jsx}",
+		"./app/**/*.{ts,tsx,js,jsx}",
+		"./src/**/*.{ts,tsx,js,jsx}",
 	],
 	prefix: "",
 	theme: {
@@ -26,7 +26,9 @@ export default {
 				foreground: 'hsl(var(--foreground))',
 				primary: {
 					DEFAULT: 'hsl(var(--primary))',
-					foreground: 'hsl(var(--primary-foreground))'
+					foreground: 'hsl(var(--primary-foreground))',
+					light: 'hsl(var(--primary-light))',
+					dark: 'hsl(var(--primary-dark))'
 				},
 				secondary: {
 					DEFAULT: 'hsl(var(--secondary))',
@@ -52,16 +54,14 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
-				sidebar: {
-					DEFAULT: 'hsl(var(--sidebar-background))',
-					foreground: 'hsl(var(--sidebar-foreground))',
-					primary: 'hsl(var(--sidebar-primary))',
-					'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
-					accent: 'hsl(var(--sidebar-accent))',
-					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
-					border: 'hsl(var(--sidebar-border))',
-					ring: 'hsl(var(--sidebar-ring))'
-				}
+				'section-bg': 'hsl(var(--section-bg))'
+			},
+			backgroundImage: {
+				'hero-gradient': 'var(--hero-gradient)'
+			},
+			boxShadow: {
+				'card': 'var(--card-shadow)',
+				'card-hover': 'var(--card-shadow-hover)'
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
