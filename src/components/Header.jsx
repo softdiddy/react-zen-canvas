@@ -1,4 +1,4 @@
-import { Menu, X } from 'lucide-react';
+import { Menu, X, ChevronDown } from 'lucide-react';
 import { useState } from 'react';
 import { Button } from './ui/button';
 
@@ -7,25 +7,32 @@ const Header = () => {
 
   const navigation = [
     { name: 'Home', href: '#' },
-    { name: 'About', href: '#about' },
-    { name: 'What We Do', href: '#services' },
-    { name: 'Events', href: '#events' },
-    { name: 'Gallery', href: '#gallery' },
-    { name: 'Contact', href: '#contact' }
+    { name: 'About Us', href: '#about' },
+    { name: 'Programs & Services', href: '#services', hasDropdown: true },
+    { name: 'News Room', href: '#news' }
   ];
 
   return (
-    <header className="bg-primary shadow-sm sticky top-0 z-50">
+    <header className="bg-background shadow-sm sticky top-0 z-50 border-b">
+      {/* Top contact bar */}
+      <div className="bg-muted/30 py-2">
+        <div className="container mx-auto px-4">
+          <div className="flex justify-end items-center space-x-6 text-sm text-muted-foreground">
+            <span>info@whypaedac.gov.ng</span>
+            <span>Get in touch</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Main header */}
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <div className="flex items-center space-x-4">
-            <div className="w-10 h-10 bg-primary-foreground rounded-full flex items-center justify-center">
-              <span className="text-primary font-bold text-lg">FA</span>
-            </div>
-            <div className="text-primary-foreground">
-              <h1 className="text-lg font-bold">Federal Agency</h1>
-              <p className="text-xs opacity-90">Local Impact Initiative</p>
+          <div className="flex items-center space-x-3">
+            <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center">
+              <div className="w-8 h-8 bg-primary-foreground rounded-full flex items-center justify-center">
+                <span className="text-primary font-bold text-sm">FA</span>
+              </div>
             </div>
           </div>
 
@@ -35,17 +42,18 @@ const Header = () => {
               <a
                 key={item.name}
                 href={item.href}
-                className="text-primary-foreground hover:text-primary-foreground/80 transition-colors text-sm font-medium"
+                className="text-foreground hover:text-primary transition-colors text-sm font-medium flex items-center space-x-1"
               >
-                {item.name}
+                <span>{item.name}</span>
+                {item.hasDropdown && <ChevronDown className="h-4 w-4" />}
               </a>
             ))}
           </nav>
 
           {/* CTA Button */}
           <div className="hidden md:block">
-            <Button variant="secondary" size="sm">
-              Contact Us
+            <Button className="bg-primary hover:bg-primary/90 text-primary-foreground">
+              Book a consultation
             </Button>
           </div>
 
@@ -55,7 +63,7 @@ const Header = () => {
               variant="ghost"
               size="sm"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-primary-foreground hover:text-primary-foreground/80"
+              className="text-foreground hover:text-primary"
             >
               {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </Button>
@@ -64,21 +72,21 @@ const Header = () => {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden bg-primary-dark">
-            <div className="px-2 pt-2 pb-3 space-y-1 border-t border-primary-light">
+          <div className="md:hidden bg-background border-t">
+            <div className="px-2 pt-2 pb-3 space-y-1">
               {navigation.map((item) => (
                 <a
                   key={item.name}
                   href={item.href}
-                  className="block px-3 py-2 text-primary-foreground hover:text-primary-foreground/80 text-sm font-medium"
+                  className="block px-3 py-2 text-foreground hover:text-primary text-sm font-medium"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item.name}
                 </a>
               ))}
               <div className="px-3 pt-2">
-                <Button variant="secondary" size="sm" className="w-full">
-                  Contact Us
+                <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground">
+                  Book a consultation
                 </Button>
               </div>
             </div>
