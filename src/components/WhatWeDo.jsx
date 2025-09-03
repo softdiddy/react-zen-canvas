@@ -1,83 +1,70 @@
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
-import { Building2, Droplets, Leaf, Users, Shield, Zap } from 'lucide-react';
+import { Button } from './ui/button';
+import { Droplets, Tractor, Trees, Users } from 'lucide-react';
 
 const WhatWeDo = () => {
   const services = [
     {
-      icon: Building2,
-      title: 'Infrastructure Development',
-      description: 'Modernizing critical infrastructure including roads, bridges, and public facilities to support growing communities.',
-      highlights: ['Transportation Networks', 'Public Buildings', 'Utility Systems']
-    },
-    {
       icon: Droplets,
-      title: 'Water Resources',
-      description: 'Ensuring clean, reliable water systems through advanced treatment facilities and distribution networks.',
-      highlights: ['Water Treatment', 'Distribution Systems', 'Quality Assurance']
+      title: '60+ Solar Boreholes',
+      description: 'Many hydroelectric host communities lack access to safe drinking water, despite living beside vast water bodies. To address this, HYPADEC has installed over 60 solar-powered boreholes in underserved areas.'
     },
     {
-      icon: Leaf,
-      title: 'Environmental Protection',
-      description: 'Implementing sustainable practices and environmental restoration projects for long-term community health.',
-      highlights: ['Ecosystem Restoration', 'Pollution Control', 'Green Infrastructure']
+      icon: Tractor,
+      title: 'Agricultural Support',
+      description: 'Farming is the main occupation in most HYPADEC communities, but climate change and dam flooding have made yields unpredictable. We support local farmers with training, starter kits, and better equipment.'
+    },
+    {
+      icon: Trees,
+      title: 'Flood Prevention',
+      description: 'Our teams clear blocked waterways to prevent flooding, especially during the rainy season. We also provide boats, safety gear, and alert training to riverside communities.'
     },
     {
       icon: Users,
-      title: 'Community Planning',
-      description: 'Collaborative planning processes that ensure community voices are heard in federal development initiatives.',
-      highlights: ['Stakeholder Engagement', 'Regional Planning', 'Impact Assessment']
-    },
-    {
-      icon: Shield,
-      title: 'Emergency Preparedness',
-      description: 'Building resilient communities through comprehensive disaster preparedness and response programs.',
-      highlights: ['Risk Assessment', 'Response Planning', 'Recovery Support']
-    },
-    {
-      icon: Zap,
-      title: 'Energy Solutions',
-      description: 'Advancing clean energy initiatives and improving energy efficiency in public and private sectors.',
-      highlights: ['Renewable Energy', 'Grid Modernization', 'Energy Efficiency']
+      title: 'Community Mapping',
+      description: 'To plan effectively, HYPADEC launched one of Nigeria\'s largest rural data-gathering exercises—mapping needs, demographics, and infrastructure gaps in over 6,000 hydro-impacted communities.'
     }
   ];
 
   return (
-    <section id="services" className="py-16 bg-section-bg">
+    <section id="services" className="py-16 bg-gray-50">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">What We Do</h2>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            Our comprehensive approach to federal-local collaboration spans multiple sectors, 
-            ensuring sustainable development and community resilience.
-          </p>
-        </div>
+        <div className="grid lg:grid-cols-5 gap-12 items-start">
+          {/* Left side content */}
+          <div className="lg:col-span-2">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">What We Do</h2>
+            <p className="text-lg text-muted-foreground mb-8">
+              Our work is people-first, data-led, and impact-focused.
+            </p>
+            <Button className="bg-green-600 hover:bg-green-700 text-white px-6 py-3">
+              View All Projects
+            </Button>
+          </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {services.map((service, index) => (
-            <Card key={index} className="group hover:shadow-card-hover transition-all duration-300 border-0 shadow-card">
-              <CardHeader className="text-center pb-4">
-                <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-primary/20 transition-colors">
-                  <service.icon className="w-8 h-8 text-primary" />
-                </div>
-                <CardTitle className="text-xl font-bold text-foreground">
-                  {service.title}
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="text-center">
-                <p className="text-muted-foreground mb-4 leading-relaxed">
-                  {service.description}
-                </p>
-                <div className="space-y-2">
-                  {service.highlights.map((highlight, idx) => (
-                    <div key={idx} className="flex items-center justify-center space-x-2">
-                      <div className="w-1.5 h-1.5 bg-primary rounded-full"></div>
-                      <span className="text-sm font-medium text-foreground">{highlight}</span>
-                    </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-          ))}
+          {/* Right side cards grid */}
+          <div className="lg:col-span-3 grid md:grid-cols-2 gap-6">
+            {services.map((service, index) => (
+              <Card key={index} className="group hover:shadow-lg transition-all duration-300 border border-gray-200 bg-white">
+                <CardHeader className="pb-4">
+                  <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+                    <service.icon className="w-6 h-6 text-green-600" />
+                  </div>
+                  <CardTitle className="text-xl font-bold text-foreground">
+                    {service.title}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground mb-4 leading-relaxed text-sm">
+                    {service.description}
+                  </p>
+                  <button className="text-green-600 hover:text-green-700 text-sm font-medium flex items-center group">
+                    Learn more 
+                    <span className="ml-1 transition-transform group-hover:translate-x-1">→</span>
+                  </button>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
         </div>
       </div>
     </section>
