@@ -4,14 +4,13 @@ import { Check } from 'lucide-react';
 
 const About = () => {
   const mandateItems = [
-    "Formulate and implement policy on the flood management and flood control",
-    "Receive and manage such funds as may be provided by the government",
-    "Liaise with the international organizations, donor agencies and NGOs",
-    "To undertake landscape education and skill development",
-    "Encourage community participation in development efforts",
-    "Facilitate access to clean and safe water, healthcare for a sustainable livelihood",
-    "Spice cover and other forest resources to encourage planning",
-    "Promote rural electrification, road construction and marketing by all relevant agencies and bodies"
+    "Formulate and implement policies for the development of host communities",
+    "Tackle ecological problems and prevent/control flooding",
+    "Resettle displaced persons and infrastructure",
+    "Promote environmental sustainability",
+    "Facilitate access to clean water, power, health care, and education",
+    "Guide state and local governments in strategic planning",
+    "Serve as an advocate, implementer, and watchdog for all hydro affected areas"
   ];
 
   const teamMembers = [
@@ -84,10 +83,10 @@ const About = () => {
               </h2>
               <div className="space-y-4 text-muted-foreground leading-relaxed">
                 <p>
-                  HYPADEC (Hydroelectric Power Producing Areas Development Commission) is a federal agency established to address the unique challenges faced by communities near Nigeria's hydroelectric dams. Our mandate encompasses flood control, community development, and the sustainable management of hydroelectric power-producing areas across the nation.
-                </p>
-                <p>
-                  Established in 2010 by Act of the National Assembly, we have expanded our reach to cover over 6,000 flood-prone communities across 10 states, making us a vital force in Nigeria's sustainable development agenda, environmental protection, and national infrastructure.
+                  HYPADEC (Hydroelectric Power Producing Areas Development Commission) is a federal agency created to 
+                  develop and protect communities impacted by Nigeria's hydroelectric dams including Kanji, Jebba, and Shiroro. 
+                  Established in 2010 by an Act of the National Assembly, we work to reduce the environmental and social impacts while providing 
+                  adequate compensation, clean energy, potable flooding support agriculture, and resource livelihoods.
                 </p>
               </div>
             </div>
