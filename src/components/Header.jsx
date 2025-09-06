@@ -13,7 +13,7 @@ const Header = () => {
     { name: 'Events', href: '/events' },
     { name: 'Gallery', href: '/gallery' },
     { name: 'Programs & Services', href: '#services', hasDropdown: true },
-    { name: 'News Room', href: '#news' }
+    { name: 'News Room', href: '/news' }
   ];
 
   return (
