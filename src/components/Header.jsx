@@ -1,13 +1,16 @@
 import { Menu, X, ChevronDown } from 'lucide-react';
 import { useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { Button } from './ui/button';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
 
   const navigation = [
-    { name: 'Home', href: '#' },
-    { name: 'About Us', href: '#about' },
+    { name: 'Home', href: '/' },
+    { name: 'About Us', href: '/about' },
+    { name: 'Events', href: '/events' },
     { name: 'Programs & Services', href: '#services', hasDropdown: true },
     { name: 'News Room', href: '#news' }
   ];
@@ -39,14 +42,29 @@ const Header = () => {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
             {navigation.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                className="text-foreground hover:text-primary transition-colors text-sm font-medium flex items-center space-x-1"
-              >
-                <span>{item.name}</span>
-                {item.hasDropdown && <ChevronDown className="h-4 w-4" />}
-              </a>
+              item.href.startsWith('#') ? (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  className="text-foreground hover:text-primary transition-colors text-sm font-medium flex items-center space-x-1"
+                >
+                  <span>{item.name}</span>
+                  {item.hasDropdown && <ChevronDown className="h-4 w-4" />}
+                </a>
+              ) : (
+                <Link
+                  key={item.name}
+                  to={item.href}
+                  className={`transition-colors text-sm font-medium flex items-center space-x-1 ${
+                    location.pathname === item.href 
+                      ? 'text-primary' 
+                      : 'text-foreground hover:text-primary'
+                  }`}
+                >
+                  <span>{item.name}</span>
+                  {item.hasDropdown && <ChevronDown className="h-4 w-4" />}
+                </Link>
+              )
             ))}
           </nav>
 
@@ -75,14 +93,29 @@ const Header = () => {
           <div className="md:hidden bg-background border-t">
             <div className="px-2 pt-2 pb-3 space-y-1">
               {navigation.map((item) => (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  className="block px-3 py-2 text-foreground hover:text-primary text-sm font-medium"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {item.name}
-                </a>
+                item.href.startsWith('#') ? (
+                  <a
+                    key={item.name}
+                    href={item.href}
+                    className="block px-3 py-2 text-foreground hover:text-primary text-sm font-medium"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {item.name}
+                  </a>
+                ) : (
+                  <Link
+                    key={item.name}
+                    to={item.href}
+                    className={`block px-3 py-2 text-sm font-medium ${
+                      location.pathname === item.href 
+                        ? 'text-primary' 
+                        : 'text-foreground hover:text-primary'
+                    }`}
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {item.name}
+                  </Link>
+                )
               ))}
               <div className="px-3 pt-2">
                 <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground">
